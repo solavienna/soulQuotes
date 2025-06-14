@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Soul Quote</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Quicksand&family=Great+Vibes&family=Handlee&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      color: #3e4a34;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      background-color: #eaf1e2;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+      animation: slideshow 420s infinite;
+    }
+
+    @keyframes slideshow {
+      0% { background-image: url('images/img1.jpg'); }
+      14.28% { background-image: url('images/img2.jpg'); }
+      28.56% { background-image: url('images/img3.jpg'); }
+      42.84% { background-image: url('images/img4.jpg'); }
+      57.12% { background-image: url('images/img5.jpg'); }
+      71.4% { background-image: url('images/img6.jpg'); }
+      85.68% { background-image: url('images/img7.jpg'); }
+      100% { background-image: url('images/img1.jpg'); }
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      color: #466142;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.8);
+      z-index: 1;
+    }
+
+    .quote-box {
+      background: linear-gradient(to bottom right, #ffffffdd, #f0f8ecdd);
+      border: 2px dashed #6f8f6d;
+      border-radius: 25px;
+      padding: 50px 40px;
+      max-width: 700px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .quote-box::before,
+    .quote-box::after {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background: url('https://www.svgrepo.com/show/44288/leaf.svg') no-repeat center center;
+      background-size: contain;
+      opacity: 0.15;
+    }
+
+    .quote-box::before {
+      top: -30px;
+      left: -30px;
+    }
+
+    .quote-box::after {
+      bottom: -30px;
+      right: -30px;
+    }
+
+    .quote {
+      font-size: 1.8em;
+      font-style: italic;
+      color: #435c3b;
+      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.4);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .author {
+      margin-top: 20px;
+      font-family: 'Italiana', serif;
+      font-size: 1.2em;
+      color: #6a7e5e;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🌿 Your Daily Soul Quote 🌿</h1>
+  <div class="quote-box">
+    <div class="quote" id="quote"></div>
+    <div class="author" id="author"></div>
+  </div>
+
+  <script>
+    const fallbackQuotes = [
+      { text: "She remembered who she was and the game changed.", author: "Lalah Delia" },
+      { text: "Softness is not weakness. It’s strength wrapped in grace.", author: "Keerthi’s Soul Notes" },
+      { text: "Let whatever you do today be enough.", author: "Unknown" },
+      { text: "Let your heart guide you. It whispers, so listen closely.", author: "The Village Within" },
+      { text: "You are not behind. It’s not too late. You’re exactly where you need to be.", author: "Unknown" },
+      { text: "Breathe, darling. This is just a chapter, not your whole story.", author: "Keerthi’s Soul Notes" },
+      { text: "Peace is the result of retraining your mind to process life as it is.", author: "Wayne Dyer" },
+      { text: "The sun will rise and we will try again.", author: "Unknown" },
+      { text: "You carry so much love in your heart. Give some to yourself.", author: "r.z" },
+      { text: "Don’t just go through life, grow through life.", author: "Eric Butterworth" }
+    ];
+
+    function displayQuote(data) {
+      const quote = data[Math.floor(Math.random() * data.length)];
+      document.getElementById('quote').textContent = `“${quote.text}”`;
+      document.getElementById('author').textContent = quote.author ? `— ${quote.author}` : "— Unknown";
+    }
+
+    displayQuote(fallbackQuotes);
+  </script>
+</body>
+</html>
